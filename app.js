@@ -4,10 +4,11 @@ const app = express()
 const port = 3000
 
 async function gg() {
+    // console.log(key["key"])
     const { Configuration, OpenAIApi } = require("openai");
 
     const configuration = new Configuration({
-        apiKey: key,
+        apiKey: key["key"],
     });
     const openai = new OpenAIApi(configuration);
 
@@ -22,6 +23,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
     gg();
 })
+
+
 
 
 
