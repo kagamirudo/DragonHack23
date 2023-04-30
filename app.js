@@ -63,11 +63,11 @@ function food_check(str) {
     return input
 }
 
-function get_prompt(list){
+function get_prompt(list) {
     let instruction = "Give me a list of dishes with these ingredients: '";
     instruction += list;
     instruction += "' and calculate the calories of each dish."
-    instruction += " No need to use them all. Present in list of json object {name: ,ingredient: ,calories:}."
+    instruction += " No need to use them all. Present each line a dish with their name, ingredient and calories."
     return instruction
 }
 
@@ -112,7 +112,16 @@ app.get('/process_get', async function (req, res) {
         // for (let i = 0; i<data.length; i++){
         //     res.status(200).send("result a: "+data[i])    
         // }
-        res.status(200).send("result: "+JSON.parse(JSON.stringify(result)))
+        rawdata = result.split(".")
+        rawdata.forEach(function(part, index) {
+            this[index] = this[index].slice(0, -1);
+        }, rawdata)
+        let msg = "result: \n"
+        for (let i = 1; i < rawdata.length; i++) {
+            msg += "<p font-size=100px>" + rawdata[i] + ")</p>"
+        }
+        console.log(msg)
+        res.status(200).send(msg)
         // res.status(200).send(JSON.stringify(list));
     }
     

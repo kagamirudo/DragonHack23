@@ -114,7 +114,16 @@ app.get('/process_get', async function (req, res) {
         // for (let i = 0; i<data.length; i++){
         //     res.status(200).send("result a: "+data[i])    
         // }
-        res.status(200).send("<p font-size=100px> result: "+JSON.parse(JSON.stringify(result))+"</p>")
+        rawdata = result.split(".")
+        rawdata.forEach(function(part, index) {
+            this[index] = this[index].slice(0, -1);
+        }, rawdata)
+        let msg = ""
+        for (let i = 1; i < rawdata.length; i++) {
+            msg += "<p font-size=100px> result: " + rawdata[i] + "</p>"
+        }
+        console.log(msg)
+        res.status(200).send(msg)
         // res.status(200).send(JSON.stringify(list));
     }
     
