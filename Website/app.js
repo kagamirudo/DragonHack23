@@ -1,8 +1,10 @@
 const key = require('./authen.js')
 const express = require('express')
 const app = express()
-const port = 80
-// const port = 3000
+app.use(express.static(__dirname));
+console.log(__dirname)
+// const port = 80
+const port = 3000
 
 async function get_gpt(input) {
     const { Configuration, OpenAIApi } = require("openai");
@@ -90,7 +92,8 @@ app.get('/run', (req, res) => {
 })
 
 app.get('/', function (req, res) {
-    res.sendFile( __dirname + "/" + "Home.html" );
+    
+    res.sendFile( "D:/Drexel/spring2023/dragohack/DragonHack23/Website/" + "Home.html" );
 })
 
 app.get('/process_get', async function (req, res) {
@@ -111,7 +114,7 @@ app.get('/process_get', async function (req, res) {
         // for (let i = 0; i<data.length; i++){
         //     res.status(200).send("result a: "+data[i])    
         // }
-        res.status(200).send("result: "+JSON.parse(JSON.stringify(result)))
+        res.status(200).send("<p font-size=100px> result: "+JSON.parse(JSON.stringify(result))+"</p>")
         // res.status(200).send(JSON.stringify(list));
     }
     
@@ -120,7 +123,7 @@ app.get('/process_get', async function (req, res) {
 
 
 
-app.listen(port,"10.250.39.73")
-// app.listen(port, () => {
-//     console.log(`Example app listening on http://localhost:${port}`)
-// })
+// app.listen(port,"10.250.39.73")
+app.listen(port, () => {
+    console.log(`Example app listening on http://localhost:${port}`)
+})

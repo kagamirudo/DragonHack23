@@ -55,10 +55,17 @@
         </nav>
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-9abd">
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
+      
       <div id = "input_field">
-        <input class="userPrompt" type="text" placeholder="The text box" />
+        <form action = "/process_get" method = "GET">
+          Ingredients: <input type = "text" name = "ingredients">  <br>   
+          <!-- Last Name: <input type = "text" name = "last_name"> -->
+          <input type = "submit" value = "Submit">
+        </form>
+      
+        <!-- <input class="userPrompt" type="text" placeholder="The text box" /> -->
       </div>
+      <div class="u-clearfix u-sheet u-sheet-1"></div>
       
     </section>
 
