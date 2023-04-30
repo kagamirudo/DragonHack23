@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 # DragonHack23
 
-Bruh
+## Good Meal - Better Healthcare Better Life
 
-
-Environmental and Healthcare:
-Waste Management in hospitals around Philly.
-=======
-# DragonHack23
-
-Bruh x2
->>>>>>> 1415bb3802adfb049498391b2c7674151a4209f9
+> Good Meal is a user-friendly platform that promotes healthy eating and reduces food waste. Our innovative technology helps you create delicious meals with leftover ingredients, saving time and money.
