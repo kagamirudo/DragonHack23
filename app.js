@@ -1,7 +1,7 @@
 const key = require('./authen.js')
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 80
 
 async function gg() {
     // console.log(key["key"])
@@ -16,7 +16,8 @@ async function gg() {
         model: "text-davinci-003",
         prompt: "Hello world",
     });
-    console.log(completion.data.choices[0].text);
+    
+    console.log(completion.data.choices);
 
 }
 app.get('/', (req, res) => {
@@ -28,6 +29,4 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(port, () => {
-    console.log(`Example app listening on http://localhost:${port}`)
-})
+app.listen(port,"10.250.39.73")
