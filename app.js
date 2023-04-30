@@ -13,23 +13,29 @@ async function get_gpt(input) {
     const openai = new OpenAIApi(configuration);
 
     const completion = await openai.createCompletion({
+        temperature: 1.0,
         model: "text-davinci-003",
+        max_tokens: 1000,
         prompt: input,
     });
 
     let res = completion.data.choices[0].text;
-    while (res.replace("\n", '') != res) {
-        res = res.replace("\n", '')
-    }
+    // while (res.replace("\n", '') != res) {
+    //     res = res.replace("\n", '')
+    // }
+    res = res.replace("\n", '')
+    res = res.replace("\n", '')
+    console.log("res:", res);
     return res;
 }
 
 function validation(rep) {
-    if (rep[0] == "Y") {
-        return true;
-    } else {
-        return false;
-    }
+    // if (rep[0] == "Y") {
+    //     return
+    // } else {
+    //     return false;
+    // }
+    return rep
 }
 
 function response(input) {
@@ -40,8 +46,8 @@ function response(input) {
         reject("Not Response");
     });
     promise.then(
-        function(value) { validation(value) },
-        function(error) { console.log(error) }
+        function(value) { return value },
+        function(error) { console.log("eee", error) }
     ).catch(() => {
         console.log("Error thrown to catch!")
     });
@@ -59,9 +65,10 @@ function food_check(str) {
 }
 
 function get_recipe(list) {
-    let instruction = "Give me a recipe with this ingredients: '";
+    let instruction = "Give me a list of recipes with this ingredients: '";
     instruction += list;
     instruction += "' and calculate the calories."
+    instruction += " No need to use them all."
     console.log(instruction)
     let meal = response(instruction);
     return meal
@@ -69,9 +76,9 @@ function get_recipe(list) {
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
-    let str = "salmon, rice, eggs";
+    let str = "salmon, rice, eggs, bacon";
     // if (food_check(str)) {
-    console.log(get_recipe(str))
+    console.log("ssss", get_recipe(str))
         // }
 })
 
