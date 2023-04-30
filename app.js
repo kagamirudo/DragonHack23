@@ -1,6 +1,7 @@
 const key = require('./authen.js')
 const express = require('express')
 const app = express()
+app.use(express.static(__dirname+"/Website"));
 const port = 80
 // const port = 3000
 
@@ -90,7 +91,7 @@ app.get('/run', (req, res) => {
 })
 
 app.get('/', function (req, res) {
-    res.sendFile( __dirname + "/" + "index.html" );
+    res.sendFile( __dirname + "/" + "Home.html" );
 })
 
 app.get('/process_get', async function (req, res) {
